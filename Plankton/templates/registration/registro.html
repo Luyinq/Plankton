@@ -1,0 +1,40 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Registrarse {% endblock %}
+{% block useractive %}<a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>{% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Login Form -->
+        <form id="registro-form" name="registro-form" action="" method="POST" style="background-color: #73aa8c;">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h5 class="modal-title">Registrarse</h5>
+            </div>
+            <div class="modal-body">
+                {% bootstrap_form form %}
+                <center><div class="g-recaptcha" data-sitekey="6Lc1amEgAAAAAHU8XA6RPbEnv5uS0zVkXQk81900"></div></center>
+                <div class="text-center text-md-left">
+            </div></div>
+            <div class="modal-footer pt-4">
+                <button style="background-color: #243c4f;" type="submit" class="btn btn-success mx-auto w-100">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% for message in messages %}
+    
+    <div class="alert alert-success">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+{% endfor %}
+  
+
+
+
+{% endblock %}

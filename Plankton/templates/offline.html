@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sin conexión</title>
+  <link rel="stylesheet" href="{% static 'Plankton/css/estilo.css'%}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'plankton/img/favicon.ico' %}"/>
+  <script src="{% static 'Plankton/js/funciones.js' %}"></script>
+  {% load pwa %}
+
+  {% progressive_web_app_meta %}
+</head>
+
+<body>
+ 
+<center><h1>No posees conexión a internet.</h1></center>
+
+</html>

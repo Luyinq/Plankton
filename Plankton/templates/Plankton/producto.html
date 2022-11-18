@@ -1,0 +1,58 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Donar {% endblock %}
+{% block tiendaactive %}<a class="nav-link active" href="#" id="navbarScrollingDropdown" role="button"
+  data-bs-toggle="dropdown" aria-expanded="false">
+  Tienda
+</a>{% endblock %}
+{% block content %}
+{% load static %}
+
+<br><br>
+
+{% for producto in selectprod %}
+<div class="productodetalle">
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="left:2%;">
+    <div class="carousel-inner" style="border-radius: 10px; width: 30rem; left: 2%;">
+      <div class="carousel-item active">
+        <img src="{{producto.foto}}" class="img-fluid" style="border-radius:5px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  
+  <div class="container detalle">
+    <H1>{{producto.nombre}}</H1>
+    <hr class="rounded" style="width:100%;">
+    <p>ID #{{producto.idProducto}} | Stock: {{producto.cantidad}}</p>
+    {% if producto.descuento != 0 %}
+    <p><h4>${{producto.valoroferta}}&nbsp;CLP</h4><del style="color:#dc3545;">${{producto.precio}}</del>&nbsp;
+    <b style="font-size: smaller;color: #0b5c19;">{{producto.descuento}}% off</b> </p>
+    {% else %}
+    <H4>${{producto.precio}}&nbsp;CLP</H4>
+    {% endif %}
+    <!--H6 style="color:rgb(28, 102, 21)">Ahorras 50% (10.000$)</H6>-->
+    <h6>{{producto.descripcion}}
+    </h6>
+    <br>
+    {% if producto.cantidad == 0 %}
+    <h5 style="color:#dc3545;">Lo sentimos, este producto no tiene stock por el momento.</h5>
+    {% else %}
+    <a href="{% url 'Add' producto.idProducto %}" class="btn btn-primary">Agregar al carrito</a>
+    {% endif %}
+{% endfor %}
+
+  </div>
+</DIV>
+
+<br><br>
+
+{% endblock %}

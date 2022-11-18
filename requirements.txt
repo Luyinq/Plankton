@@ -1,0 +1,10 @@
+django == 4.0.4
+pillow
+django-crispy-forms
+django-rest-framework
+requests
+django-pwa
+django-allauth
+python-dateutil
+django-bootstrap-v5
+sweetify

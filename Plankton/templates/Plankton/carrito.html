@@ -1,0 +1,74 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Contacto {% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+<div class="alert alert-primary" role="alert" style="background: #73aa8c;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="row" colspan="3" class="text-center">CARRITO</th>
+        </tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <th scope="col">PRECIO</th>
+          <th scope="col">CANTIDAD</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% if request.session.carrito.items %}
+      {% for key, value in request.session.carrito.items %}
+      {% for prod in productos %}
+      {% if prod.idProducto == value.producto_id %}
+        <tr>
+          <td>{{value.nombre}}</td>
+          <td>{{value.acumulado}}</td>
+          <td>{{value.cantidad}}
+            {% if value.cantidad >= prod.cantidad %}       
+            {% else %}
+            <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+            {% endif %}
+            {% endif %}{% endfor %}
+            <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+          </td>
+        </tr>
+        
+      {% endfor %}
+      {% else %}
+      <tr>
+          <td colspan="3">
+              <div class="alert alert-danger text-center" style="color: #ffbec4; background-color: #9b5158; border-color: #f5c2c7;">No hay productos seleccionados</div>
+          </td>
+      </tr>
+      {% endif %}
+        <tr>
+          <th scope="row">Total:</th>
+          <th colspan="2">{% if user.is_authenticated %}{{mensaje}}{% endif %} ${{total_carrito}}</th>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    {% if request.session.carrito.items %}
+    {% if user.is_authenticated %}
+    <form id="compracarrito">
+      <div class="row text-center">
+        <div class="col-6"><a href="{% url 'CLS' %}" style="background-color: #9b5158;" class="btn btn-danger deleter">Limpiar</a></div>
+        <div class="col-6"><a href="{% url 'comprar' %}" style="background-color: #243c4f;" class="btn btn-success comprar">Comprar</a></div>       
+      </div>
+      </form>
+    {% else %}
+    <form id="compracarrito">
+      <div class="row text-center">  
+          <div class="col-6"><a href="{% url 'CLS' %}" style="background-color: #9b5158;" class="btn btn-danger deleter">Limpiar</a></div>
+      </div>
+      </form>
+    {% endif %}
+    {% else %}
+    
+    
+    {% endif %}
+    
+    </div>
+
+
+{% endblock %}

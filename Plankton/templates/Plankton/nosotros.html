@@ -1,0 +1,84 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Nosotros {% endblock %}
+{% block nosotrosactive %}<a class="nav-link active" href="{% url 'nosotros'%}">Nosotros</a>{% endblock %}
+{% block content %}
+{% load static %}
+<br><br><br>
+
+<section class="nosotros">
+    <div class="container ">
+
+        <h1>Nosotros</h1>
+        <hr class="rounded">
+        <br>
+        <h5>Somos una agrupación formada el año 2020 sin fines de lucro. Nuestro objetivo es ofrecer los mejores
+            productos de jardinería a nuestros clientes. Nos esforzamos día a día por hacer de Plankton una mejor
+            empresa. ¡Siéntete líbre de contactarnos!</h5>
+        <br>
+        <div class="deck">
+            <div class="card" style="width: 19rem; margin-top: 20px;">
+                <img class="img-fluid" src="{% static 'plankton/img/gosling.png'%}" style="border-radius:50px; padding:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Juanito Gonzalez</h5>
+                    <p class="card-text" style="text-align:left">
+                        <b>Cargo: </b>CEO Plankton
+                        <br>
+                        <b>Edad: </b>42 años
+                        <br>
+                        <b>Correo: </b>juanitoelmejor@gmail.com
+                        <br>
+                        <b>Estudios: </b>Ing. Agrónoma PUCV
+                        <br>&nbsp;
+                    </p>
+
+                </div>
+            </div>
+            <div class="card" style="width: 19rem; margin-top: 20px;">
+                <img class="img-fluid" src="{% static 'plankton/img/laura.png'%}" style="border-radius:50px; padding:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Laura Palmer</h5>
+                    <p class="card-text" style="text-align:left">
+                        <b>Cargo: </b>COO Plankton
+                        <br>
+                        <b>Edad: </b>24 años
+                        <br>
+                        <b>Correo: </b>firewalkwithme@gmail.com
+                        <br>
+                        <b>Estudios: </b>Ing. Comercial Universidad de Chile
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="card" style="width: 19rem; margin-top: 20px;">
+                <img class="img-fluid" src="{% static 'plankton/img/pattinson.png'%}" style="border-radius:50px; padding:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Roberto Plantinson</h5>
+                    <p class="card-text" style="text-align:left">
+                        <b>Cargo: </b>Publicista Plankton
+                        <br>
+                        <b>Edad: </b>27 años
+                        <br>
+                        <b>Correo: </b>iamjustice@gmail.com
+                        <br>
+                        <b>Estudios: </b>Publicidad PUCV
+                        <br>&nbsp;
+                    </p>
+                </div>
+
+            </div>
+</section>
+
+
+<br><br><br>
+<div id="videoiframe">
+    <iframe style="border-radius:20px;" width="560" height="315"
+        src="https://www.youtube-nocookie.com/embed/5Pu0liSPaDY" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+</div>
+
+
+
+<br><br><br>
+{% endblock %}

@@ -1,0 +1,124 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Inicio {% endblock %}
+{% block indexactive %}<a class="nav-link active" aria-current="page" href="{% url 'index'%}">Inicio</a>{% endblock %}
+{% block content %}
+{% load static %}
+    <!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    </div>
+  
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="img-fluid" src="{% static 'plankton/img/planta.jpg'%}" alt="Planta">
+        <div class="carousel-caption">
+            <h1 style="color:white;">¿Quiénes somos?</h1>
+            <p>Somos una agrupación formada el año 2020 sin fines de lucro. Nuestro objetivo es ofrecer los mejores productos de jardinería a nuestros clientes. Nos esforzamos día a día por hacer de Plankton una mejor empresa. ¡Siéntete líbre de contactarnos!</p>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <img class="img-fluid" src="{% static 'plankton/img/maceteros.jpg'%}" alt="Macetero">
+        <div class="carousel-caption">
+          <h1 style="color:white;">Tienda</h1>
+            <p>Echa un vistazo a todos los productos que ofrecemos</p>
+          </div>
+      </div>
+    </div>
+  
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  <br><br><br>
+  <hr class="rounded">
+  <div id="ofertas" class="ofertas">
+    <br>
+    <h1>PRODUCTOS DESTACADOS</h1>
+    <hr class="rounded">
+    <br>
+    <div class="deck">
+    {% for prod in productos|slice:":4" %}
+    {% if prod.cantidad == 0 %}
+    <div class="card" style="opacity:0.8; border-color:#dc3545;">
+    {% else %}
+    <div class="card">
+    {% endif %}
+        <img src="{{prod.foto}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{prod.nombre}}</h5>
+          {% if prod.descuento != 0 %}
+          <p class="card-text"><b>Precio: </b>${{prod.valoroferta}}&nbsp;<i><del style="color:#dc3545;font-size: medium;">${{prod.precio}}</del>&nbsp;
+          <b style="font-size: smaller;color: #0b5c19;">{{prod.descuento}}% off</b></i> 
+          {% else %}
+          <p class="card-text"><b>Precio: </b>${{prod.precio}}
+          {% endif %}
+          <br><b>Stock: </b>{{prod.cantidad}}<br><b>Descripción: </b></p><p style="  max-width: 400px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;">{{prod.descripcion}}</p><br>
+          <a href="{% url 'producto' prod.idProducto %}" class="btn btn-primary">Ir al producto</a>
+        </div>
+      </div>
+    {% endfor %}
+    </div></div>
+
+    <!-- NOSOTROS -->
+    <br><br><br>
+    <hr class="rounded">
+    <br>
+    <div id="nosotros" class="nosotros">
+    <h1>ACERCA DE NOSOTROS</h1>
+    <hr class="rounded">
+    <br>
+    <H6 class="txtnosotros">Somos una compañía formada el año 2020 sin fines de lucro. Nuestro objetivo es ofrecer los mejores productos de jardinería a nuestros clientes. Nos esforzamos día a día por hacer de Caso B una mejor empresa. ¡Siéntete líbre de contactarnos!
+  </H6>
+  <br>
+  <a href="{% url 'nosotros'%}" class="btn btn-primary">Leer más</a>
+  
+  </div>
+    <br><br>
+
+    <hr class="rounded">
+    <br>
+    <!-- CATEGORÍA -->
+    <div id="categorias" class="categorias">
+     <H1>CATEGORÍAS</H1>
+     <hr class="rounded">
+     <br>
+     <div class="deck" style="display:inline-flex;">
+      <!-- TODO -->
+      <div class="container" style="max-width: 300px; margin-top: 2%;">
+        <a href="{% url 'tienda'%}">
+          <img src="{% static 'plankton/img/cat-todo.jpg'%}" alt="Avatar" class="image">
+          <div class="overlay">Ir a todo</a></div></div>
+          <!-- OFERTAS -->
+        <div class="container" style="max-width: 300px; margin-top: 2%;">
+          <a href="{% url 'tiendaofertas'%}">
+          <img src="{% static 'plankton/img/cat-ofertas.jpg'%}" alt="Avatar" class="image">
+          <div class="overlay">Ir a ofertas</a></div></div>
+          <!-- HERRAMIENTAS -->
+        <div class="container" style="max-width: 300px; margin-top: 2%;">
+          <a href="{% url 'tiendaherramientas'%}">
+          <img src="{% static 'plankton/img/cat-herramientas.jpg'%}" alt="Avatar" class="image">
+          <div class="overlay">Ir a herramientas</a></div>
+        </div>
+          <!-- PLANTAS -->
+        <div class="container" style="max-width: 300px; margin-top: 2%;">
+          <a href="{% url 'tiendaplantas'%}">
+          <img src="{% static 'plankton/img/cat-plantas.jpg'%}" alt="Avatar" class="image">
+          <div class="overlay">Ir a plantas</a></div>
+        </div>
+    </div>
+  </div>
+    <br><br>
+    
+    {% endblock %}

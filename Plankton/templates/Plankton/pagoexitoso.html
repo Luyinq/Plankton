@@ -1,0 +1,22 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Pago Éxitoso {% endblock %}
+{% block content %}
+{% load static %}
+
+<br>
+<section class="PagoSuccess">
+  <div class="container" style="width: 100%; background-color: #73aa8c; padding: 30px; border-radius: 10px;">
+    <h1 style="text-align:center;">El pago se ha realizado con éxito</h1>
+    <hr class="rounded">
+    <br>
+    <div>
+      <img src="{% static 'plankton/img/check.png'%}" style="left: 35%; max-width: 30%;" alt="">
+    </div>
+    <br><br>
+    <div style="text-align:center;"><button class="btn btn-primary"
+        onclick=window.location.href="{% url 'index'%}">Aceptar</button></div>
+
+  </div>
+  <br>
+
+  {% endblock %}

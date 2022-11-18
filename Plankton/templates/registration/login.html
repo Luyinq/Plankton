@@ -1,0 +1,41 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block content %}
+{% load socialaccount %}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Login Form -->
+        <form action="" method="POST" style="background-color: #73aa8c;">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h5 class="modal-title">Iniciar sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="Username">Usuario<span class="text-danger">*</span></label>
+                    <input type="text" name="username" class="form-control" id="Username" placeholder="Ingrese usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="Password">Contraseña<span class="text-danger">*</span></label>
+                    <input type="password" name="password" class="form-control" id="Password"
+                        placeholder="Ingrese contraseña">
+                </div>
+            </div>
+            <div class="modal-footer pt-4">
+                <button style="background-color: #243c4f;" type="submit"
+                    class="btn btn-success mx-auto w-100">Ingresar</button>
+            </div>
+            {% if form.errors %}
+            <p style="color: red; font-weight: bold; text-align: center;">El correo o la contraseña no son correctos.</p>
+            {% endif %}
+            <p class="text-center">¿Nuevo cliente? &nbsp;<a href="{% url 'registro'%}">Registrarse</a></p>
+            <p class="text-center">&nbsp;<a href="{% provider_login_url 'google'%}">Iniciar con Google</a></p>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

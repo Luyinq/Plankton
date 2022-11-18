@@ -1,0 +1,471 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #a8ddc0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #243c4f
+}
+
+li {
+  color: rgb(0, 0, 0);
+}
+
+.logo-image {
+  width: 56px;
+  height: 56px;
+}
+
+.carousel-item>img {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.carousel-item {
+  background-color: #000;
+  position: relative;
+}
+
+hr.rounded {
+  margin: auto;
+  width: 70%;
+  border-top: 8px solid rgb(0, 0, 0);
+  border-radius: 5px;
+}
+
+.ofertas,
+.nosotros,
+.categorias {
+  width: 100%;
+  text-align: center;
+}
+
+.card {
+  margin: 5px;
+  background-color: #73aa8c;
+  border-radius: 5%;
+  width: 18rem;
+}
+
+.card img{
+  width:  288px;
+  height: 288px;
+  object-fit: cover;
+  border-radius:50px; 
+  padding:20px;
+}
+
+.btn-primary {
+  background-color: #243c4f;
+}
+
+.deck {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.newsletter {
+  width: 100%;
+  margin: 0px;
+  padding: 80px 0;
+  background: #73aa8c;
+  position: relative;
+}
+
+.newsletter .content {
+  max-width: 650px;
+  margin: auto;
+  text-align: center;
+
+  z-index: 2;
+}
+
+.newsletter .content h2 {
+  color: #243c4f;
+  margin-bottom: 40px;
+}
+
+.newsletter .content .form-control {
+  height: 50px;
+  border-color: #ffffff;
+  border-radius: 0;
+}
+
+.newsletter .content.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #243c4f;
+}
+
+.newsletter .content .btn {
+  min-height: 50px;
+  border-radius: 0;
+  background: #243c4f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover,
+a:focus {
+  color: rgba(252, 252, 252, 0.63);
+  text-decoration: none;
+}
+
+.form-control {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+
+footer {
+  margin: auto;
+  background: #73aa8c;
+}
+
+.txtnosotros {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* Make the image to responsive */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  /* Black see-through */
+  color: #f1f1f1;
+  width: 92%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.productodetalle {
+  position: RELATIVE;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detalle {
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  width: 50%;
+  background: #73aa8c;
+}
+
+/* The side navigation menu */
+.sidebar {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #73aa8c;
+  /* position: fixed; */
+  /* height: 100%; */
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #243c4f;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+#formdiv-50{
+  width:50%;
+}
+
+
+#formdiv-33{
+  width:33.3%;
+}
+
+#formulario {
+  width: 80%;
+  left: 10%;
+  background: #73aa8c;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  border-radius: 5px;
+}
+
+/* On screens that are less than 991px wide, make the sidebar into a topbar */
+@media screen and (max-width: 991px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar a {
+    float: left;
+  }
+
+  .card {
+    margin-left:25px;
+  }
+
+  div.content {
+    margin-left: 0;
+  }
+
+  .tiendaprod-flex {
+    width: 100%;
+  }
+
+  #formdiv-50{
+    width: 100%;
+  }
+  
+  #formdiv-33{
+    width: 100%;
+  }
+
+  #formulario{
+    width: 100%;
+    left: 0%;
+    background: #73aa8c;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+  }
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+
+.tiendaprod-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.FAQ .content {
+  max-width: 650px;
+  margin: auto;
+  text-align: center;
+
+  z-index: 2;
+}
+
+.FAQ .content h2 {
+  color: #243c4f;
+  margin-bottom: 40px;
+}
+
+.FAQ .content .form-control {
+  height: 50px;
+  border-color: #ffffff;
+  border-radius: 0;
+}
+
+.FAQ .content.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #243c4f;
+}
+
+.FAQ .content .btn {
+  min-height: 50px;
+  border-radius: 0;
+  background: #243c4f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.form-control {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+
+
+footer {
+  margin: auto;
+  background: #73aa8c;
+}
+
+.containerfaq {
+  width: 100%;
+  background-color: #73aa8c;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+label.error {
+  -webkit-animation: fadein 1s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 1s;
+  /* Internet Explorer */
+  -o-animation: fadein 1s;
+  /* Opera < 12.1 */
+  animation: fadein 1s;
+  color: #a72e2e;
+  font-size: 1rem;
+  display: block;
+  margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+  border: 1px dashed #a72e2e;
+  font-weight: 300;
+  color: #a72e2e;
+}
+
+#videoiframe {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

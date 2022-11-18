@@ -1,0 +1,65 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Lista Productos {% endblock %}
+{% block administraractive %}<a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown"
+role="button" data-bs-toggle="dropdown" aria-expanded="false">
+Administrar
+</a>{% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+{% load sweetify %}
+
+
+<br><br>
+<div class="container" id="lista">
+    <div style="text-align:center;">
+        <h1>Lista de usuarios</h1>
+        <hr class="rounded">
+        <br>
+    </div>
+    <div id="tablalistar">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Inicio</th>
+                    <th scope="col">Termino</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+                {% for user in usuarios %}
+                <tr>
+                    <td>{{user.userid}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.tipo}}</td>
+                    <td>{{user.inicio}}</td>
+                    <td>{{user.final}}</td>
+                    {% if user.activo == True %}
+                    <td style="color:#0b5c19">{{user.activo}}</td>
+                    {% else %}
+                    <td style="color:#dc3545">{{user.activo}}</td>
+                    {% endif %}
+                    {% if perms.Plankton.change_membership %}
+                    <td><a class="btn btn-primary" href="{% url 'modificarsub' user.userid%}">Modificar</a></td>
+                    {% endif %}
+                    {% if perms.Plankton.delete_membership %}
+                    <td><a class="btn btn-primary deleter" goto="{% url 'eliminarsub' user.userid%}">Eliminar</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            
+        </table>
+    </div>
+    {% if perms.Plankton.add_membership %}
+    <a class="btn btn-primary" href="{% url 'subregistro'%}">Nueva suscripción</a>
+    {% endif %}
+
+</div>
+<br>
+
+{% endblock %}
+{% sweetify %}

@@ -1,0 +1,87 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Tienda {% endblock %}
+{% block tiendaactive %}<a class="nav-link active" aria-current="page" href="{% url 'tienda'%}">Tienda</a>{% endblock %}
+{% block content %}
+{% load static %}
+<br>
+
+
+  <!-- The sidebar -->
+  <div class="sidebar" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+    <a class="active">Tienda</a>
+    {% block todoactive %}<a href="{% url 'tienda' %}">Todo</a>{% endblock %}
+    {% block ofertasactive %}<a href="{% url 'tiendaofertas' %}">Ofertas</a>{% endblock %}
+    {% block plantasactive %}<a href="{% url 'tiendaplantas' %}">Plantas</a>{% endblock %}
+    {% block herramientasactive %}<a href="{% url 'tiendaherramientas' %}">Herramientas</a>{% endblock %}
+    {% block accesoriosactive %}<a href="{% url 'tiendaaccesorios' %}">Accesorios</a>{% endblock %}
+  </div>
+  
+  <div class="tiendaprod-flex" class="containerflex">
+    {% for prod in productos %}
+    {% if prod.cantidad != 0 %}
+    <div class="card">
+      <img src="{{prod.foto}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <br>
+        <h5 class="card-title">{{prod.nombre}}</h5>
+        {% if prod.descuento != 0 %}
+        <p class="card-text"><b>Precio: </b>${{prod.valoroferta}}&nbsp;<i><del style="color:#dc3545;font-size: medium;">${{prod.precio}}</del>&nbsp;
+        <b style="font-size: smaller;color: #0b5c19;">{{prod.descuento}}% off</b></i>
+        {% else %}
+        <p class="card-text"><b>Precio: </b>${{prod.precio}}
+        {% endif %}
+        <br><b>Stock: </b>{{prod.cantidad}}<br><b>Descripción: </b><p style="  max-width: 2000000px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;">{{prod.descripcion}}</p><br>
+        </p>
+        <center><a href="{% url 'producto' prod.idProducto %}" class="btn btn-primary">Ir al producto</a></center>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% for prod in productos %}
+    {% if prod.cantidad == 0 %}
+    <div class="card" style="opacity:0.7; border-color:#dc3545;">
+      <img src="{{prod.foto}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <br>
+        <h5 class="card-title">{{prod.nombre}}</h5>
+        {% if prod.descuento != 0 %}
+        <p class="card-text"><b>Precio: </b>${{prod.valoroferta}}&nbsp;<i><del style="color:#dc3545;font-size: medium;">${{prod.precio}}</del>&nbsp;
+        <b style="font-size: smaller;color: #0b5c19;">{{prod.descuento}}% off</b></i>
+        {% else %}
+        <p class="card-text"><b>Precio: </b>${{prod.precio}}
+        {% endif %}
+        <br><b>Stock: </b>{{prod.cantidad}}<br><b>Descripción: </b><p style="  max-width: 2000000px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;">{{prod.descripcion}}</p><br>
+        </p>
+        <center><a href="{% url 'producto' prod.idProducto %}" class="btn btn-primary">Ir al producto</a></center>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  
+
+
+
+
+  <br>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+  {% endblock %}

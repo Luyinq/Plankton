@@ -1,0 +1,33 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Donar {% endblock %}
+
+{% block donacionactive %}
+<a class="nav-link active" aria-current="page" href="{% url 'donacion'%}">Donar</a>
+{% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+<section class="mb-4" id="formulario">
+
+  <!--Section heading-->
+  <h2 class="h1-responsive font-weight-bold text-center my-4">¡Apoya nuestra causa!</h2>
+  <!--Section description-->
+  <p class="text-center w-responsive mx-auto mb-5">Cualquier donativo es bienvenido y estaremos muy agradecidos. Siempre
+    estamos en busca de mejorar
+    y quisiéramos que tú fueras parte de este proceso.
+  </p>
+
+      <form id="donation-form" name="donation-form" action="" method="POST" autocomplete="on">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+
+
+        <div class="text-center text-md-left">
+          <br>
+          <input class="btn btn-primary" name="enviar" id="enviar" type="submit" value="Enviar">
+        </div>
+      </form>
+
+<!--Section: Contact v.2-->
+{% endblock %}

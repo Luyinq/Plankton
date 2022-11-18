@@ -1,0 +1,62 @@
+{%extends "Plankton/plantillas/base.html"%}
+{% block title %} Plankton - Lista Productos {% endblock %}
+{% block administraractive %}<a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown"
+role="button" data-bs-toggle="dropdown" aria-expanded="false">
+Administrar
+</a>{% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+{% load sweetify %}
+
+
+<br><br>
+<div class="container" id="lista">
+    <div style="text-align:center;">
+        <h1>Lista de productos</h1>
+        <hr class="rounded">
+        <br>
+    </div>
+    <div id="tablalistar">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">¿Destacado?</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+                {% for prod in productos %}
+                <tr>
+                    <td>{{prod.idProducto}}</td>
+                    <td>{{prod.nombre}}</td>
+                    <td>${{prod.precio}}</td>
+                    <td>{{prod.cantidad}}</td>
+                    <td><img src="{{prod.foto}}" width="50" height="50" style="border-radius: 4px;"></td>
+                    <td>{{prod.destacado}}</td>
+                    {% if perms.Plankton.change_producto %}
+                    <td><a class="btn btn-primary" href="{% url 'modificarproducto' prod.idProducto%}">Modificar</a></td>
+                    {% endif %}
+                    {% if perms.Plankton.delete_producto %}
+                    <td><a class="btn btn-primary deleter" href="{% url 'eliminarproducto' prod.idProducto%}">Eliminar</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            
+        </table>
+    </div>
+    {% if perms.Plankton.add_producto %}
+    <a class="btn btn-primary" href="{% url 'productoregistro'%}">Nuevo producto</a>
+    {% endif %}
+    <a class="btn btn-primary deleter" href="{% url 'borrarDestacados'%}">Borrar destacados</a>
+
+</div>
+<br>
+
+{% endblock %}
+{% sweetify %}
