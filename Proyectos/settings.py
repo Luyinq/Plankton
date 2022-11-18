@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-uk@2la78&*-u4aidoe%(c2#l3_z=%a*)i+oqrv^39dz1$jue6d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.7', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 AUTHENTICATION_BACKENDS = (
     ('django.contrib.auth.backends.ModelBackend'),
@@ -165,8 +165,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 
 # Default primary key field type
